@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="alert alert-success" role="alert">
+    <h4>Data Exposure</h4>
+    <ul>
+        <li>
+            Sensitive data is NOT exposed during this login!
+        </li>
+    </ul>
+</div>
+<h1>Login</h1>
+
+<span style="color:red">@ViewBag.Error</span>
+
+<form id="loginForm" action="/sensitivedataexposureafter/login" method="post">
+    <input type="text" placeholder="email" name="Email" required />
+
+    <br />
+    <br />
+
+    <input type="text" placeholder="password" id="password" name="Password" required />
+
+    <br />
+    <br />
+    <input type="button" value="Login" onclick="loginSubmit()"/>
+</form>
+
+@section Scripts {
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/md5.js"></script>
+
+    <script>
+    function loginSubmit() {
+            var encryptedPassword = CryptoJS.MD5($("#password").val());
+
+                $('#password').val(encryptedPassword);
+                $('#loginForm').submit();
+
+        }
+    </script>
+}

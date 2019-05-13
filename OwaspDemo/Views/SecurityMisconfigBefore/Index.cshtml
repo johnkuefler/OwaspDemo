@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="alert alert-danger" role="alert">
+    <h4>Improper error handling can expose sensitive info!</h4>
+    <ul>
+        <li>
+            The button below will trigger errors meant for developers, not for end users.
+        </li>
+    </ul>
+</div>
+
+
+<a class="btn btn-danger" href='/securitymisconfigbefore/triggererror'>Trigger Error</a>

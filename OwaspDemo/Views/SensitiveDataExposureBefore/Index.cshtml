@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewData["Title"] = "Register";
+}
+<div class="alert alert-danger" role="alert">
+    <h4>Data Exposure</h4>
+    <ul>
+        <li>
+            Sensitive data is exposed during this registration process!
+        </li>
+    </ul>
+</div>
+
+<h1>Register</h1>
+
+<span style="color:red">@ViewBag.Error</span>
+
+<form action="/sensitivedataexposurebefore/index" method="post">
+    <input type="text" placeholder="email" name="Email" required />
+
+    <br />
+    <br />
+
+    <input type="text" placeholder="password" name="Password" required />
+
+    <br />
+    <br />
+
+    <input type="text" placeholder="password" name="ConfirmPassword" required />
+
+    <br />
+    <br />
+    <input type="submit" value="Register" />
+</form>
+

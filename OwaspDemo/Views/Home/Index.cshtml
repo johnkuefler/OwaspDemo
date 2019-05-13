@@ -1,0 +1,145 @@
+﻿@{
+    ViewData["Title"] = "OWASP Top 10";
+}
+
+<div>
+    <h1 class="display-4">OWASP Top 10 Examples</h1>
+    <a href="/home/resetdata">Reset data</a>
+    <br />
+    <br />
+    <table class="table table-bordered table-striped">
+        <thead style="font-weight:bold">
+            <tr>
+                <td>Item</td>
+                <td>Before</td>
+                <td>After</td>
+            </tr>
+        </thead>
+
+        <tr>
+            <td>
+                Injection
+            </td>
+            <td>
+                <a href="/injectionbefore">Before</a>
+            </td>
+            <td>
+                <a href="/injectionafter">After</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Broken Authentication
+            </td>
+            <td>
+                Before
+            </td>
+            <td>
+                After
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Sensitive Data Exposure
+            </td>
+            <td>
+                <a href="/sensitivedataexposurebefore/index">Register</a>
+                <br />
+                <a href="/sensitivedataexposurebefore/login">Login</a>
+            </td>
+            <td>
+                <a href="/sensitivedataexposureafter/index">Register</a>
+                <br />
+                <a href="/sensitivedataexposureafter/login">Login</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                XML External Entities (XXE)
+            </td>
+            <td>
+                Before
+            </td>
+            <td>
+                After
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Broken Access Control
+            </td>
+            <td>
+                Before
+            </td>
+            <td>
+                After
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Security Misconfiguration
+            </td>
+            <td>
+                <a href="/securitymisconfigbefore">Misconfigured error page</a>
+                <br />
+                <a href="https://securityheaders.com/" target="_blank">Misconfigured headers</a>
+            </td>
+            <td>
+                <a href="/securitymisconfigafter">Correctly configured error page</a>
+                <br />
+                <a href="https://securityheaders.com/" target="_blank">Correctly configured headers</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Cross-Site Scripting (XSS)
+            </td>
+            <td>
+                <a href="/cssbefore/index">Create account</a>
+                <br />
+                <a href="/cssbefore/listlogins">View accounts</a>
+            </td>
+            <td>
+                <a href="/cssafter/index">Create account unprotected</a>
+                <br />
+                <a href="/cssafter/index2">Create account protected</a>
+                <br />
+                <a href="/cssafter/listlogins">View accounts</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Insecure Deserialization
+            </td>
+            <td>
+                <a href="/swagger">Before</a>
+            </td>
+            <td>
+                <a href="/swagger">After</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Using Components with Known Vulnerabilities
+            </td>
+            <td>
+                <a href="/componentvulnerabilitiesbefore">Vulnerable packages</a>
+            </td>
+            <td>
+                <a href="/componentvulnerabilitiesafter">No vulnerable packages</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Insufficient Logging and Monitoring
+            </td>
+            <td>
+                <a href="/loggingbefore">Insufficient Logging</a>
+            </td>
+            <td>
+                <a href="/loggingafter">Global Logging</a><br />
+                <a href="/auditlogging/login">Login audit logging</a>
+            </td>
+        </tr>
+    </table>
+</div>

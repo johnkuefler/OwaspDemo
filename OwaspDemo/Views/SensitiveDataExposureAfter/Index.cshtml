@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewData["Title"] = "Register";
+}
+<div class="alert alert-success" role="alert">
+    <h4>Data Exposure</h4>
+    <ul>
+        <li>
+            Sensitive data is NOT exposed during this registration process!
+        </li>
+    </ul>
+</div>
+
+<h1>Register</h1>
+
+<span style="color:red">@ViewBag.Error</span>
+
+<form id="registerForm" action="/sensitivedataexposurebefore/index" method="post">
+    <input type="text" placeholder="email" name="Email" required />
+
+    <br />
+    <br />
+
+    <input type="text" placeholder="password" id="password" name="Password" required />
+
+    <br />
+    <br />
+
+    <input type="text" placeholder="password" id="confirmPassword" name="ConfirmPassword" required />
+
+    <br />
+    <br />
+    <input type="button" value="Register" onclick="registerSubmit()"/>
+</form>
+
+@section Scripts {
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/md5.js"></script>
+
+    <script>
+    function registerSubmit() {
+            var encryptedPassword = CryptoJS.MD5($("#password").val());
+            var encryptedConfirm = CryptoJS.MD5($("#confirmPassword").val());
+
+            $('#password').val(encryptedPassword)
+            $('#confirmPassword').val(encryptedConfirm)
+            $('#registerForm').submit();
+        }
+    </script>
+}

@@ -1,0 +1,42 @@
+﻿@model IEnumerable<OwaspDemo.Data.Models.Login>
+
+@{
+    ViewData["Title"] = "Users";
+}
+
+<div class="alert alert-danger" role="alert">
+    <h4>This list is vulnerable to Cross Site Scripting!</h4>
+    <ul>
+        <li>
+            Raw html/js is NOT being escaped
+        </li>
+    </ul>
+</div>
+
+<h1>Users</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.Raw(item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

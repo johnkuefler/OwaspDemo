@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+}
+
+    <div class="alert alert-danger" role="alert">
+        <h4>Data Exposure</h4>
+        <ul>
+            <li>
+                Sensitive data is exposed during this login!
+            </li>
+        </ul>
+    </div>
+<h1>Login</h1>
+
+<span style="color:red">@ViewBag.Error</span>
+
+<form action="/sensitivedataexposurebefore/login" method="post">
+    <input type="text" placeholder="email" name="Email" required />
+
+    <br />
+    <br />
+
+    <input type="text" placeholder="password" name="Password" required />
+
+    <br />
+    <br />
+    <input type="submit" value="Login" />
+</form>
