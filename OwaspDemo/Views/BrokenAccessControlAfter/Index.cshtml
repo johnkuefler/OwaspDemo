@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewData["Title"] = "My Data";
+}
+
+<h1>My Data</h1>
+
+
+<table class="table table-bordered table-striped" id="table">
+    <tr>
+        <td>Email</td>
+        <td>Name</td>
+    </tr>
+
+
+</table>
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            $.get('/v2/users/me', function (data) {
+                $('#table').append('<tr><td>' + data.email + '</td><td>' + data.name + '</td></tr>');
+            });
+        })
+    </script>
+}
