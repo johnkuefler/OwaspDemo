@@ -46,7 +46,7 @@ namespace OwaspDemo
 
             services.AddSession(options =>
             {
-                options.IdleTimeout = TimeSpan.FromMinutes(20);
+                options.IdleTimeout = TimeSpan.FromDays(5);
             });
 
             services.Configure<IdentityOptions>(options =>
@@ -57,6 +57,13 @@ namespace OwaspDemo
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = false;
             });
+
+            //services.ConfigureApplicationCookie(options =>
+            //{
+            //    options.Cookie.HttpOnly = true;
+            //    options.Cookie.Expiration = TimeSpan.FromMinutes(20);
+            //    options.SlidingExpiration = true;
+            //});
 
             services.AddSwaggerGen(c =>
             {
