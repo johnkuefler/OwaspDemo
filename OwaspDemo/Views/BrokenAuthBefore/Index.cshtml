@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<span style="color:red">@ViewBag.Error</span>
+
+<form action="/brokenauthbefore/index" method="post">
+    <input type="text" placeholder="email" name="Email" required />
+
+    <br />
+    <br />
+
+    <input type="text" placeholder="password" name="Password" required />
+
+    <br />
+    <br />
+    <input type="submit" value="Login" />
+</form>

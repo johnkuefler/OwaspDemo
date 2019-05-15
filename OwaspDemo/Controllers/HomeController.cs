@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using OwaspDemo.Data;
 using OwaspDemo.Data.Models;
@@ -13,9 +14,11 @@ namespace OwaspDemo.Controllers
     public class HomeController : Controller
     {
         private ApplicationDbContext _context;
-        public HomeController(ApplicationDbContext context)
+        private UserManager<IdentityUser> _userManager;
+        public HomeController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         public IActionResult Index()
@@ -25,7 +28,7 @@ namespace OwaspDemo.Controllers
 
         public IActionResult ResetData()
         {
-            DatabaseSeeder seeder = new DatabaseSeeder(_context);
+            DatabaseSeeder seeder = new DatabaseSeeder(_context, _userManager);
 
             seeder.SeedData();
 

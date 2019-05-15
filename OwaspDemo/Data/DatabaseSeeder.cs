@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using OwaspDemo.Data.Models;
 using System;
 using System.Collections.Generic;
@@ -10,16 +11,18 @@ namespace OwaspDemo.Data
     public class DatabaseSeeder
     {
         private readonly ApplicationDbContext _context;
-
-        public DatabaseSeeder(ApplicationDbContext context)
+        private readonly UserManager<IdentityUser> _userManager;
+        public DatabaseSeeder(ApplicationDbContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         public void SeedData()
         {
             ClearData();
             SeedLogins();
+            SeedUsers();
         }
 
         public void ClearData()
@@ -29,6 +32,16 @@ namespace OwaspDemo.Data
             _context.Database.ExecuteSqlCommand("DELETE FROM [AspNetUsers]");
 
             _context.Database.ExecuteSqlCommand("DELETE FROM [AuditLogs]");
+        }
+
+        public void SeedUsers()
+        {
+            IdentityUser user = new IdentityUser
+            {
+                UserName = "john@dev-squared.com",
+                Email = "john@dev-squared.com"
+            };
+            _userManager.CreateAsync(user, "PA$5word").Wait();
         }
 
         public void SeedLogins()

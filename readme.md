@@ -9,3 +9,4 @@ This app expects data to be stored in a MS SQL LocalDB instance. Run migrations 
 `dotnet ef database update` - this will set up an "OwaspDemo" database.
 
 When the project is run the first time, a database seeder will create initial data in the database. 
+
