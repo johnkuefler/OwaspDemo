@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OwaspDemo</name>
+    </assembly>
+    <members>
+        <member name="M:OwaspDemo.Controllers.InsecureDeserializationAfterController.Index(OwaspDemo.Models.LoginQueryModel)">
+            <remarks>
+            Try this
+            {
+                 "email": " 'or'1'='1 "
+            }
+            </remarks>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OwaspDemo.Controllers.InsecureDeserializationBeforeController.Index(OwaspDemo.Models.LoginQueryModel)">
+            <remarks>
+            Try this
+            {
+                 "email": " 'or'1'='1 "
+            }
+            </remarks>
+            <param name="param"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

@@ -19,12 +19,12 @@ namespace OwaspDemo.Controllers
             _configuration = configuration;
         }
 
-        /// <summary>
+        /// <remarks>
         /// Try this
         /// {
         ///      "email": " 'or'1'='1 "
         /// }
-        /// </summary>
+        /// </remarks>
         /// <param name="param"></param>
         /// <returns></returns>
         [HttpPost("~/api/users/after")]
