@@ -4,10 +4,22 @@
 }
 
 <div class="alert alert-danger" role="alert">
-    <h4>This form is still vulnerable to Cross Site Scripting!</h4>
+    <h4>This form is vulnerable to Cross Site Scripting!</h4>
     <ul>
         <li>
-            The full name field could be used to harvest data.
+            The full name field could be used to harvest data or deface the website.
+        </li>
+        <li>
+            @{
+                string simpleJs = "<script>alert('I could be stealing your data');</script>";
+                <text>Basic: @simpleJs</text>
+            }
+        </li>
+        <li>
+            @{
+                string defacementJs = "<script>document.body.background='https://i.ytimg.com/vi/dGFSjKuJfrI/maxresdefault.jpg';</script>";
+                <text>Defacement: @defacementJs</text>
+            }
         </li>
     </ul>
 </div>

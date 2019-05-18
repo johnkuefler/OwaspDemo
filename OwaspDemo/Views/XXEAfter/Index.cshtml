@@ -2,6 +2,30 @@
 @{
     ViewData["Title"] = "Index";
 }
+<div class="alert alert-success" role="alert">
+    <h4>XML External Entity Processing</h4>
+    <ul>
+        <li>
+            The XML processing here is safe and will ignore DTD processing over a certain limit
+        </li>
+        <li>
+            Ex: Billion laughs attack
+        </li>
+    </ul>
+</div>
+
 
 <h1>XXE Attack</h1>
-<a href="/xxeafter/attack">Launch XXE Attack</a>
+
+<p>Submit XML for processing here:</p>
+
+<form method="post" action="/xxeafter/attack">
+
+    <textarea name="xml" style="min-width:500px">
+
+    </textarea>
+    <br />
+
+    <input type="submit" value="Submit" />
+</form>
+

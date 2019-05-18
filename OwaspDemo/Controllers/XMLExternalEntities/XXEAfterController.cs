@@ -25,16 +25,15 @@ namespace OwaspDemo.Controllers.XMLExternalEntities
             return View();
         }
 
-        public IActionResult Attack()
+        [HttpPost]
+        public IActionResult Attack(string xml)
         {
-            var fileName = Path.Combine(_environment.WebRootPath, "XmlFiles") + "\\xxe.xml";
-            string xmlText = System.IO.File.ReadAllText(fileName);
-
+          
             var doc = new XmlDocument();
 
             try
             {
-                using (var stream = new MemoryStream(Encoding.Default.GetBytes(xmlText)))
+                using (var stream = new MemoryStream(Encoding.Default.GetBytes(xml)))
                 {
                     var settings = new XmlReaderSettings();
                     settings.DtdProcessing = DtdProcessing.Parse;

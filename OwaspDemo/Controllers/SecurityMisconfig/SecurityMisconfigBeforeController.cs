@@ -25,8 +25,8 @@ namespace OwaspDemo.Controllers
         {
             _context.Logins.Add(new Data.Models.Login
             {
-                Email = "test@test.com",
-                Name = "this is way longer than the maximum of 20 characters allowed",
+                Email = "test@waylongerthanthemaxallowed.com",
+                Name = "Bob Test",
                 Password = "password"
             });
 
