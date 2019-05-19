@@ -53,13 +53,6 @@ namespace OwaspDemo
                 options.Password.RequireUppercase = false;
             });
 
-            //services.ConfigureApplicationCookie(options =>
-            //{
-            //    options.Cookie.HttpOnly = true;
-            //    options.Cookie.Expiration = TimeSpan.FromMinutes(20);
-            //    options.SlidingExpiration = true;
-            //});
-
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "Demo API", Version = "v1" });

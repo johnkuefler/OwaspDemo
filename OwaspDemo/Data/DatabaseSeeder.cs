@@ -32,6 +32,8 @@ namespace OwaspDemo.Data
             _context.Database.ExecuteSqlCommand("DELETE FROM [AspNetUsers]");
 
             _context.Database.ExecuteSqlCommand("DELETE FROM [AuditLogs]");
+
+            _context.Database.ExecuteSqlCommand("DELETE FROM [StolenSessions]");
         }
 
         public void SeedUsers()

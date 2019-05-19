@@ -3,6 +3,15 @@
     ViewData["Title"] = "Index";
 }
 
+<div class="alert alert-danger" role="alert">
+    <h4>Broken Authentication</h4>
+    <ul>
+        <li>
+            This authentication scheme sets an unsecure, long lasting cookie!
+        </li>
+    </ul>
+</div>
+
 <span style="color:red">@ViewBag.Error</span>
 
 <form action="/brokenauthbefore/index" method="post">

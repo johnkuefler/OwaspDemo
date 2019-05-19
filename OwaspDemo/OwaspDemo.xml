@@ -4,6 +4,13 @@
         <name>OwaspDemo</name>
     </assembly>
     <members>
+        <member name="M:OwaspDemo.Controllers.BrokenAuth.BrokenAuthBeforeController.HarvestSession(OwaspDemo.Models.StolenSessionModel)">
+            <remarks>
+            Simulated endpoint for stolen session values to go to
+            </remarks>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
         <member name="M:OwaspDemo.Controllers.InsecureDeserializationAfterController.Index(OwaspDemo.Models.LoginQueryModel)">
             <remarks>
             Try this

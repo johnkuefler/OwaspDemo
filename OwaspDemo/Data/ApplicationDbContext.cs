@@ -16,5 +16,6 @@ namespace OwaspDemo.Data
 
         public DbSet<Login> Logins { get; set; }
         public DbSet<AuditLog> AuditLogs { get; set; }
+        public DbSet<StolenSession> StolenSessions { get; set; }
     }
 }
