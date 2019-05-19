@@ -8,16 +8,19 @@ using System.Xml;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System.Text;
+using Microsoft.Extensions.Logging;
 
 namespace OwaspDemo.Controllers.XMLExternalEntities
 {
     public class XXEAfterController : Controller
     {
         private readonly IHostingEnvironment _environment;
+        private readonly ILogger<XXEAfterController> _logger;
 
-        public XXEAfterController(IHostingEnvironment environment)
+        public XXEAfterController(IHostingEnvironment environment, ILogger<XXEAfterController> logger)
         {
             _environment = environment;
+            _logger = logger;
         }
 
         public IActionResult Index()
@@ -28,29 +31,17 @@ namespace OwaspDemo.Controllers.XMLExternalEntities
         [HttpPost]
         public IActionResult Attack(string xml)
         {
-          
-            var doc = new XmlDocument();
+            xml = xml.Trim();
+            string output = "";
 
-            try
+            XmlTextReader reader = new XmlTextReader(new StringReader(xml));
+            reader.DtdProcessing = DtdProcessing.Ignore;
+            while (reader.Read())
             {
-                using (var stream = new MemoryStream(Encoding.Default.GetBytes(xml)))
-                {
-                    var settings = new XmlReaderSettings();
-                    settings.DtdProcessing = DtdProcessing.Parse;
-                    settings.MaxCharactersFromEntities = 2048;
-
-                    using (var reader = XmlReader.Create(stream, settings))
-                    {
-                        doc.Load(reader);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                return View("Attack", "A potentially dangerous XML file was rejected");
+                output += reader.Value;
             }
 
-            return View("Attack", "XML file parsed successfully");
+            return View("Attack", output);
         }
     }
 }

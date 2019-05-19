@@ -28,21 +28,22 @@ namespace OwaspDemo.Controllers.XMLExternalEntities
         [HttpPost]
         public IActionResult Attack(string xml)
         {
-            var doc = new XmlDocument();
+            xml = xml.Trim();
+            string output = "";
 
-            using (var stream = new MemoryStream(Encoding.Default.GetBytes(xml)))
+            XmlReaderSettings rs = new XmlReaderSettings();
+            rs.DtdProcessing = DtdProcessing.Parse;
+            rs.XmlResolver = new XmlUrlResolver();
+            rs.MaxCharactersFromEntities = 0;
+
+            XmlReader myReader = XmlReader.Create(new StringReader(xml), rs);
+
+            while (myReader.Read())
             {
-                var settings = new XmlReaderSettings();
-                settings.DtdProcessing = DtdProcessing.Parse;
-                settings.MaxCharactersFromEntities = 0;
-
-                using (var reader = XmlReader.Create(stream, settings))
-                {
-                   doc.Load(reader);
-                }
+                output += myReader.Value;
             }
 
-            return View("Attack");
+            return View("Attack", output);
         }
     }
 }

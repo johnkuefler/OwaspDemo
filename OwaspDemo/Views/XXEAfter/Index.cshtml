@@ -6,10 +6,13 @@
     <h4>XML External Entity Processing</h4>
     <ul>
         <li>
-            The XML processing here is safe and will ignore DTD processing over a certain limit
+            The XML processing here is safe and will ignore DTD
         </li>
         <li>
             Ex: Billion laughs attack
+        </li>
+        <li>
+            Ex: Remote file execution
         </li>
     </ul>
 </div>
@@ -21,7 +24,7 @@
 
 <form method="post" action="/xxeafter/attack">
 
-    <textarea name="xml" style="min-width:500px">
+    <textarea name="xml" style="min-width:800px; min-height:500px">
 
     </textarea>
     <br />

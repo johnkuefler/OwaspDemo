@@ -1,0 +1,5 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE doc [
+  <!ENTITY win SYSTEM "file://C:/data/demo.txt">
+]>
+<doc>&win;</doc>
