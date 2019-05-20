@@ -49,7 +49,7 @@ namespace OwaspDemo.Controllers
                 return View();
             }
 
-            _logger.LogInformation($"User registered successfully! Info: {JsonConvert.SerializeObject(registerViewModel)}");
+            _logger.LogWarning($"User registered successfully! Info: {JsonConvert.SerializeObject(registerViewModel)}");
 
             return View("RegistrationSuccess", registerViewModel.Email);
         }
@@ -68,7 +68,7 @@ namespace OwaspDemo.Controllers
 
             if (result.Succeeded)
             {
-                _logger.LogInformation($"Login success audit. {JsonConvert.SerializeObject(loginViewModel)}");
+                _logger.LogWarning($"Login success audit. {JsonConvert.SerializeObject(loginViewModel)}");
 
                 return View("LoginSuccess", loginViewModel.Email);
             }
