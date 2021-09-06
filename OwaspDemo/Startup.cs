@@ -79,8 +79,10 @@ namespace OwaspDemo
                 appBuilder.UseDatabaseErrorPage();
             });
 
-            //// X-Content-Type-Options header
+            //// security headers
+            //// Hsts
             //app.UseHsts(hsts => hsts.MaxAge(365).IncludeSubdomains());
+            //// X-Content-Type-Options header
             //app.UseXContentTypeOptions();
             //// Referrer-Policy header.
             //app.UseReferrerPolicy(opts => opts.NoReferrer());
@@ -99,6 +101,15 @@ namespace OwaspDemo
             //    .ImageSources(s => s.Self())
             //    .ScriptSources(s => s.Self())
             //);
+
+            //// permissions policy
+            //app.Use(async (context, next) =>
+            //{
+            //    // this would disable all of these browser APIs
+            //    context.Response.Headers.Add("Permissions-Policy", "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()");
+            //    await next();
+            //});
+
 
             app.UseRouting();
 
