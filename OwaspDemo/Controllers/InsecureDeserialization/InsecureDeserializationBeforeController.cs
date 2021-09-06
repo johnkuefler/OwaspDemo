@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using OwaspDemo.Data.Models;
 using OwaspDemo.Models;
 
 namespace OwaspDemo.Controllers
 {
     public class InsecureDeserializationBeforeController : Controller
     {
-        IConfiguration _configuration;
+        readonly IConfiguration _configuration;
 
         public InsecureDeserializationBeforeController(IConfiguration configuration)
         {

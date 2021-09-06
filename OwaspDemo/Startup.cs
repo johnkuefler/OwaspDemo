@@ -1,22 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OwaspDemo.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using OwaspDemo.Filters;
-using Swashbuckle.AspNetCore.Swagger;
 using System.Reflection;
 using System.IO;
+using Microsoft.OpenApi.Models;
 
 namespace OwaspDemo
 {
@@ -35,8 +28,9 @@ namespace OwaspDemo
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddDefaultIdentity<IdentityUser>()
-                .AddDefaultUI(UIFramework.Bootstrap4)
+                .AddDefaultUI()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddSession(options =>
@@ -55,7 +49,7 @@ namespace OwaspDemo
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info { Title = "Demo API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Demo API", Version = "v1" });
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.XML";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
@@ -64,7 +58,7 @@ namespace OwaspDemo
             services.AddMvc(options =>
             {
                 // options.Filters.Add(typeof(AuditFilter));
-            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -106,6 +100,8 @@ namespace OwaspDemo
             //    .ScriptSources(s => s.Self())
             //);
 
+            app.UseRouting();
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
@@ -119,11 +115,10 @@ namespace OwaspDemo
                 c.SwaggerEndpoint($"/swagger/v1/swagger.json", "Demo API");
             });
 
-            app.UseMvc(routes =>
+
+            app.UseEndpoints(endpoints =>
             {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

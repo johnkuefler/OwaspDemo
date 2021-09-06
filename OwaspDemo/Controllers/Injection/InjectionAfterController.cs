@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 
@@ -11,7 +7,7 @@ namespace OwaspDemo.Controllers
 {
     public class InjectionAfterController : Controller
     {
-        IConfiguration _configuration;
+        readonly IConfiguration _configuration;
 
         public InjectionAfterController(IConfiguration configuration)
         {
